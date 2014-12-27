@@ -7,8 +7,7 @@ TODO LIST
 ===========================
 1. Create Interface
 2. How-To Guide to using paycoind
-3. Provide Online paycoind web wallet
-4. Connect to paycoinprice.com api to get upto the min exchange rate prices
+3. Provide Online paycoind web wallet https://www.paycoingateway.com
 
 DONATE
 ===========================
