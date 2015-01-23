@@ -91,7 +91,6 @@ class PaycoinGateway_Rpc
         $curlOpts[CURLOPT_HTTPHEADER] = $headers;
         $curlOpts[CURLOPT_CAINFO] = dirname(__FILE__) . '/ca-PaycoinGateway.crt';
         $curlOpts[CURLOPT_RETURNTRANSFER] = true;
-        $curlOpts[CURLOPT_CONNECTTIMEOUT] = 20;
 
         // Do request
         curl_setopt_array($curl, $curlOpts);
