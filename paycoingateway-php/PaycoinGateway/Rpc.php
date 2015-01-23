@@ -89,7 +89,7 @@ class PaycoinGateway_Rpc
         // CURL options
         $curlOpts[CURLOPT_URL] = $url;
         $curlOpts[CURLOPT_HTTPHEADER] = $headers;
-        $curlOpts[CURLOPT_CAINFO] = dirname(__FILE__) . '/ca-PaycoinGateway.crt';
+        $curlOpts[CURLOPT_CAINFO] = dirname(__FILE__) . '/ca-bundle.crt';
         $curlOpts[CURLOPT_RETURNTRANSFER] = true;
 
         // Do request

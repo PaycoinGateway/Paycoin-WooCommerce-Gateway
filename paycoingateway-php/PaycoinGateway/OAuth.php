@@ -54,7 +54,7 @@ class PaycoinGateway_OAuth
         curl_setopt($curl, CURLOPT_POST, 1);
         curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($postFields));
         curl_setopt($curl, CURLOPT_URL, 'https://www.paycoingateway.com/oauth/token');
-        curl_setopt($curl, CURLOPT_CAINFO, dirname(__FILE__) . '/ca-PaycoinGateway.crt');
+        curl_setopt($curl, CURLOPT_CAINFO, dirname(__FILE__) . '/ca-bundle.crt');
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('User-Agent: PaycoinGatewayPHP/v1'));
 
