@@ -13,9 +13,11 @@ class PaycoinGateway_Rpc
 
     public function request($method, $url, $params)
     {
+        $auth = $this->_authentication->getData();
         // Create query string
         $queryString = http_build_query($params);
         $url = PaycoinGateway::API_BASE . $url;
+        $queryString .= "&ACCESS_KEY=".$auth->apiKey."&ACCESS_SECRET=".md5($auth->apiKeySecret);
 
         // Initialize CURL
         $curl = curl_init();
@@ -42,9 +44,7 @@ class PaycoinGateway_Rpc
         }
 
         // Headers
-        $headers = array('User-Agent: PaycoinGatewayPHP/v1');
-
-        $auth = $this->_authentication->getData();
+        $headers = array('User-Agent: PaycoinGatewayPHP/v2');
 
         // Get the authentication class and parse its payload into the HTTP header.
         $authenticationClass = get_class($this->_authentication);
@@ -54,7 +54,6 @@ class PaycoinGateway_Rpc
                 if(time() > $auth->tokens["expire_time"]) {
                     throw new PaycoinGateway_TokensExpiredException("The OAuth tokens are expired. Use refreshTokens to refresh them");
                 }
-
                 $headers[] = 'Authorization: Bearer ' . $auth->tokens["access_token"];
                 break;
 
@@ -75,12 +74,6 @@ class PaycoinGateway_Rpc
                 $headers[] = "ACCESS_NONCE: $microseconds";
                 break;
 
-            case 'PaycoinGateway_SimpleApiKeyAuthentication':
-                // Use Simple API key
-                // Warning! This authentication mechanism is deprecated
-                $headers[] = 'Authorization: api_key ' . $auth->apiKey;
-                break;
-
             default:
                 throw new PaycoinGateway_ApiException("Invalid authentication mechanism");
                 break;
@@ -96,6 +89,7 @@ class PaycoinGateway_Rpc
         curl_setopt_array($curl, $curlOpts);
         $response = $this->_requestor->doCurlRequest($curl);
 
+        //$json = json_decode($response['body']);
         // Decode response
         try {
             $json = json_decode($response['body']);
@@ -103,7 +97,7 @@ class PaycoinGateway_Rpc
             throw new PaycoinGateway_ConnectionException("Invalid response body a", $response['statusCode'], $response['body']);
         }
         if($json === null) {
-            throw new PaycoinGateway_ApiException("Invalid response body - ".$response['statusCode']." ".$response['body'], $response['statusCode'], $response['body']);
+            throw new PaycoinGateway_ApiException("Invalid response body - ".$response['statusCode']." | ".$response['body']." | ".$url, $response['statusCode'], $response['body']);
         }
         if(isset($json->error)) {
             throw new PaycoinGateway_ApiException($json->error, $response['statusCode'], $response['body']);

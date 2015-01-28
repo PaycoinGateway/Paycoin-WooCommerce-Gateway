@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: paycoingateway-woocommerce
- * Plugin URI: https://github.com/paycoingateway/woocommerce
+ * Plugin URI: https://github.com/paycoingateway/
  * Description: Accept Paycoin on your WooCommerce-powered website with PaycoinGateway.
- * Version: 1.5.1
+ * Version: 2.6.5
  * Author: PaycoinGateway.com
  * Author URI: https://www.paycoingateway.com
  * License: MIT
@@ -53,7 +53,7 @@ if (in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_
 		 *
 		 * @class       WC_Gateway_Paycoin
 		 * @extends     WC_Payment_Gateway
-		 * @version     2.6.0
+		 * @version     2.6.5
 		 * @author      PaycoinGateway.com
 		 */
 		class WC_Gateway_PaycoinGateway extends WC_Payment_Gateway {

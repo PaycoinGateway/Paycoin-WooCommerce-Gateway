@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="Paycoin WooCommerce Gateway">
+  <component name="PublishConfigData" autoUpload="Always" serverName="Paycoin WooCommerce Gateway">
     <serverData>
       <paths name="Paycoin WooCommerce Gateway">
         <serverdata>
@@ -10,6 +10,7 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
 
