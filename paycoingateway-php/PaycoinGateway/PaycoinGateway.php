@@ -2,7 +2,7 @@
 
 class PaycoinGateway
 {
-    const API_BASE = 'https://www.paycoingateway.com/api/v2/paycoin/';
+    const API_BASE = 'https://api.paycoingateway.com/v2/paycoin/';
     private $_rpc;
     private $_authentication;
 
