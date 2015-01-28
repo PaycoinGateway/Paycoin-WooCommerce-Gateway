@@ -1,2 +1,2 @@
-Paycoin-WooCommerce-Gateway
+Paycoin-WooCommerce-Gateway  Version: 2.6.5
 ===========================
